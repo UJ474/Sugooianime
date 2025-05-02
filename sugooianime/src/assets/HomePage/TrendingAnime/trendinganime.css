@@ -1,5 +1,5 @@
 .trendingheroslider {
-    height: 60vh;
+    height: 95vh;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -18,7 +18,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 3s ease-in-out;
     pointer-events: none;
     z-index: 1; 
 }
@@ -26,17 +26,19 @@
 .fade-in {
     opacity: 1;
     z-index: 2;
-}
-
-.fade-out {
+    transition: opacity 3s ease-in-out;
+  }
+  
+  .fade-out {
     opacity: 0;
     z-index: 1;
-}
+    transition: opacity 3s ease-in-out;
+  }
 
 .trendingheroslider img {
     height: 100%;
     width: auto;
-    padding: 2rem;
+    /* padding: 2rem; */
 }
 
 .trendingherosliderdata {
@@ -52,19 +54,40 @@
     left: 0;
     top: 0;
     color: white;
-    background-color: rgba(0,0,0,0.5);
-    padding: 1rem;
+    /* background-color: rgba(0,0,0,0.1); */
+    margin-top: 7rem;
+    padding: 3rem;
     border-radius: 8px;
-    width: 60%;
+    width: 30%;
+    height: 100%;
     text-align: left;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    /* font-size: small; */
 }
 
 
 .genre-tag {
-    background-color: rgba(70, 131, 254, 0.926);
+    background-color: rgba(0, 85, 254, 0.494);
     padding: 5px 10px;
     border-radius: 15px;
     margin-right: 5px;
     font-size: 14px;
     opacity: 1;
   }
+
+
+
+.herosliderimages img {
+    -webkit-mask-image: 
+        linear-gradient(to left, black 30%, transparent 80%),
+        linear-gradient(to bottom, black 50%, transparent 100%);
+    -webkit-mask-composite: destination-in;
+    mask-image: 
+        linear-gradient(to left, black 30%, transparent 100%),
+        linear-gradient(to bottom, black 30%, transparent 100%);
+    mask-composite: intersect;
+
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+}
+

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SynopsisText({ text, limit = 400 }) {
+export default function SynopsisText({ text, limit = 350 }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -10,7 +10,7 @@ export default function SynopsisText({ text, limit = 400 }) {
   if (!text) return null;
   
   return (
-    <p>
+    <p style={{fontSize:'15px'}}>
       {isExpanded ? text : `${text.slice(0, limit)}...`}
       {text.length > limit && (
         <span 
