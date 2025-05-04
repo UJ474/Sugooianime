@@ -33,6 +33,8 @@
 .navbarleft {
     position: relative;
     left: 0;
+    text-decoration: none;
+    color: inherit;
 }
 
 .navbarright {

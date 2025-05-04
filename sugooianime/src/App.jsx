@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Footer from './assets/components/footersection'
 import Header from './assets/components/headersection'
@@ -8,11 +9,14 @@ function App() {
 
   return (
     <>
+    <Router>
       <Header />
-      <TrendingAnime />
-      {/* <SuggestedAnime /> */}
-      
+        <Routes>
+          <Route path='/' element={<TrendingAnime />} />
+          <Route path='/suggested' element={<SuggestedAnime />} />
+        </Routes>
       <Footer />
+    </Router>
     </>
   )
 }

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../css_files/headersection.css'
 import searchImage from '../images/searchimage.png';
 import savedImage from '../images/savedimage.png';
@@ -6,10 +7,10 @@ import hamburgerimage from '../images/hamburgerimage.png';
 
 export default function Header() {
     const headertextlinksleft = [
-        {heading: 'Home',},
-        {heading: 'New',},
-        {heading: 'Most Popular',},
-        {heading: 'Genre',},
+        { heading: 'Home', path: '/' },
+        { heading: 'New', path: '/suggested' },
+        { heading: 'Most Popular', path: '#' },
+        { heading: 'Genre', path: '#' },
     ]
 
     const headertextlinksright = [
@@ -23,7 +24,7 @@ export default function Header() {
             <div className="navbarleft-container">
                 <img src={hamburgerimage} alt='hamburgerimage' className='hamburgerimage'/>
                 {headertextlinksleft.map((heading, index) => {
-                    return <div key={index} className='navbarleft hamburger'>{heading.heading}</div>;
+                    return <Link to={heading.path} key={index} className='navbarleft hamburger'>{heading.heading}</Link>;
                 })}
             </div>
             <div className="navbarright-container">
