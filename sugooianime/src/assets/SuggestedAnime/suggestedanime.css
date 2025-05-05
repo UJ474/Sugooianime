@@ -1,0 +1,34 @@
+.suggested-anime-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.page-button, .change-buttons {
+    background-color: #1e3a8a; /* dark blue */
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    margin: 0 5px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.page-button:hover, .change-buttons:hover {
+    background-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.page-button.active, .change-buttons.active {
+    background-color: #0f172a;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.page-button:disabled, .change-buttons:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}

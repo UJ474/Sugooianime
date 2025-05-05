@@ -4,6 +4,7 @@ import searchImage from '../images/searchimage.png';
 import savedImage from '../images/savedimage.png';
 import accountImage from '../images/accountimage.png';
 import hamburgerimage from '../images/hamburgerimage.png';
+import sugooianimelogo from '../images/sugooianimelogo2.png';
 
 export default function Header() {
     const headertextlinksleft = [
@@ -23,6 +24,7 @@ export default function Header() {
         <nav className="headersectionmain">
             <div className="navbarleft-container">
                 <img src={hamburgerimage} alt='hamburgerimage' className='hamburgerimage'/>
+                <img src={sugooianimelogo} alt='sugooianimelogo' className='sugooianimelogo'/>
                 {headertextlinksleft.map((heading, index) => {
                     return <Link to={heading.path} key={index} className='navbarleft hamburger'>{heading.heading}</Link>;
                 })}

@@ -7,7 +7,7 @@
     padding: 10px 30px;
     width: 100%;
     /* margin: 0 auto; */
-    background-color: #717171;
+    background-color: #031b50;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
@@ -20,13 +20,13 @@
     font-weight: 100;
     letter-spacing: 0.5px;
     transition: color 0.3s ease, background 0.3s ease;
-    padding: 3px 6px;
+    padding: 6px 6px;
     border-radius: 8px;
 }
 
 .navbarleft:hover {
     color: #000000;
-    background: rgba(255, 76, 96, 0.2);
+    background: rgba(255, 2, 31, 0.2);
 }
 
 
@@ -67,6 +67,7 @@
 }
 
 @media screen and (max-width: 870px) {
+
     .navbarleft-container {
         display: flex;
         gap: 0.5em;
@@ -86,6 +87,7 @@
 }
 
 @media screen and (max-width: 560px) {
+
     .hamburger {
         display: none;
     }
@@ -105,4 +107,11 @@
         align-items: center;
         padding: 5px 5px;
     }
+}
+
+
+.sugooianimelogo {
+    height: 2.5rem;
+    width: auto;
+    position: relative;
 }
