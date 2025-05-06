@@ -3,7 +3,7 @@
     width: 230px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 33, 199, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 33, 199, 0.451);
     margin: 10px;
     transition: transform 0.3s ease;
     background-color: #0319986e;
@@ -21,7 +21,7 @@
 }
 
 .anime-card:hover .anime-image {
-    opacity: 0.3;
+    opacity: 0.6;
 }
 
 .anime-overlay {
@@ -69,7 +69,6 @@
     }
     
 }
-
 
 @media screen and (max-width: 480px) {
     .anime-card {

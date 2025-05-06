@@ -12,6 +12,8 @@ export default function SuggestedAnime() {
     const [currentPage, setCurrentPage] = useState(Number(localStorage.getItem("animePage")) || 1);
 
     useEffect(() => {
+        localStorage.removeItem('suggestedanimesdata');
+
         const suggestedStoredData = localStorage.getItem('suggestedanimesdata');
 
         if (suggestedStoredData) {
@@ -86,7 +88,7 @@ export default function SuggestedAnime() {
             ))}
         </div>
             <div style={{ marginTop: '1rem' }}>
-                <button className="change-buttons" disabled={currentPage === 1} onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}>Prev</button>
+                <button className="change-buttons" disabled={currentPage === 1} onClick={() => setCurrentPage(prev => (prev - 1))}>Prev</button>
                 {Array.from({ length: 10 }, (_, i) => {
                     const startPage = Math.max(currentPage - 5, 1);
                     const pageNum = startPage + i;
@@ -101,3 +103,5 @@ export default function SuggestedAnime() {
         </>
     )
 }
+
+

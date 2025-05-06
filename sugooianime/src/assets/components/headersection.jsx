@@ -9,9 +9,9 @@ import sugooianimelogo from '../images/sugooianimelogo2.png';
 export default function Header() {
     const headertextlinksleft = [
         { heading: 'Home', path: '/' },
-        { heading: 'New', path: '/suggested' },
-        { heading: 'Most Popular', path: '#' },
-        { heading: 'Genre', path: '#' },
+        { heading: 'New', path: '/current' },
+        { heading: 'Most Popular', path: '/suggested' },
+        { heading: 'Genre', path: '/' },
     ]
 
     const headertextlinksright = [

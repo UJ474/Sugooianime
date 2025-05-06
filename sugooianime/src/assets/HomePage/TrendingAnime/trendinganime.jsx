@@ -26,7 +26,7 @@ export default function TrendingAnime() {
     ]
 
     useEffect(() => {
-        localStorage.removeItem('trendingAnime');
+        // localStorage.removeItem('trendingAnime');
         // localStorage is a Web API that allows you to store key-value pairs in the browser...
         // and the data persists even after the page is refreshed or the browser is closed.
 

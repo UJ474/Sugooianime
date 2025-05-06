@@ -7,7 +7,7 @@
     padding: 10px 30px;
     width: 100%;
     /* margin: 0 auto; */
-    background-color: #031b50;
+    background: linear-gradient(50deg, #623fff49, #5631f9dc);
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
