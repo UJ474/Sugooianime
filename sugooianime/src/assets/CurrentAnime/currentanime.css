@@ -1,8 +1,9 @@
 .suggested-anime-list {
+    padding: 5rem 0 5rem 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
+    gap: 1.5rem;
 }
 
 .page-button, .change-buttons {

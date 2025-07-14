@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AnimeCard from '../../components/animecard';
-import './feed.css';
+import './homepageother.css';
 
 
 const SuggestedAnimeFeed = () => {
@@ -29,7 +29,7 @@ const SuggestedAnimeFeed = () => {
             .then(response => response.json())
             .then(data => {
                 if (data.data && data.data.length > 0) {
-                    const top30 = data.data.slice(0, 30).map(anime => ({
+                    const top30 = data.data.slice(0, 20).map(anime => ({
                         title: anime.title,
                         title_english: anime.title_english,
                         score: anime.score,
@@ -55,9 +55,9 @@ const SuggestedAnimeFeed = () => {
     }
 
     return (
-        <div style={{ margin: '20px 0' }}>
-            <h2 style={{ marginLeft: '20px' }}>Suggested Anime</h2>
-            <div style={{ display: 'flex', overflowX: 'auto', padding: '10px 20px' }}>
+        <div>
+            <h2 className="fancy-heading" style={{ textAlign: 'left', paddingLeft: '20px' }}>Suggested</h2>
+            <div className="anime-scroll">
                 {animeList.slice(0, 10).map((anime, index) => (
                     <div key={index} style={{ flex: '0 0 auto', marginRight: '10px' }}>
                         <AnimeCard

@@ -87,7 +87,7 @@ export default function SuggestedAnime() {
                 />
             ))}
         </div>
-            <div style={{ marginTop: '1rem' }}>
+            <div style={{ marginTop: '3rem' }}>
                 <button className="change-buttons" disabled={currentPage === 1} onClick={() => setCurrentPage(prev => (prev - 1))}>Prev</button>
                 {Array.from({ length: 10 }, (_, i) => {
                     const startPage = Math.max(currentPage - 5, 1);
@@ -103,5 +103,3 @@ export default function SuggestedAnime() {
         </>
     )
 }
-
-

@@ -81,7 +81,8 @@ export default function CurrentAnimes() {
                 />
             ))}
         </div>
-        <div style={{ marginTop: '1rem' }}>
+        
+        <div style={{ marginTop: '3rem' }}>
             <button className="change-buttons" disabled={currentPage === 1} onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}>Prev</button>
             {Array.from({ length: 10 }, (_, i) => {
                 const startPage = Math.max(currentPage - 5, 1);

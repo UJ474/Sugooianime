@@ -1,12 +1,13 @@
 .suggested-anime-list {
+    padding: 5rem 0 5rem 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
+    gap: 1.5rem;
 }
 
 .page-button, .change-buttons {
-    background-color: #1e3a8a; /* dark blue */
+    background-color: #1e3a8a;
     color: #fff;
     border: none;
     padding: 8px 14px;
