@@ -11,7 +11,7 @@ export default function Header() {
         { heading: 'Home', path: '/' },
         { heading: 'New', path: '/current' },
         { heading: 'Most Popular', path: '/suggested' },
-        { heading: 'Genre', path: '/' },
+        { heading: 'Genre', path: '/filter' },
     ]
 
     const headertextlinksright = [
@@ -24,7 +24,7 @@ export default function Header() {
         <nav className="headersectionmain">
             <div className="navbarleft-container">
                 <img src={hamburgerimage} alt='hamburgerimage' className='hamburgerimage'/>
-                <img src={sugooianimelogo} alt='sugooianimelogo' className='sugooianimelogo'/>
+                <Link to='/' ><img src={sugooianimelogo} alt='sugooianimelogo' className='sugooianimelogo'/></Link>
                 {headertextlinksleft.map((heading, index) => {
                     return <Link to={heading.path} key={index} className='navbarleft hamburger'>{heading.heading}</Link>;
                 })}

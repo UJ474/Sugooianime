@@ -5,6 +5,8 @@ import Header from './assets/components/headersection'
 import SuggestedAnime from './assets/SuggestedAnime/suggestedanime.jsx'
 import HomePagecontent from './assets/HomePage/HomePagecontent.jsx'
 import CurrentAnimes from './assets/CurrentAnime/currentanimes.jsx'
+import GenrePage from './assets/GenrePage/genrepage.jsx';
+
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
           <Route path='/' element={<HomePagecontent />} />
           <Route path='/suggested' element={<SuggestedAnime />} />
           <Route path='/current' element={<CurrentAnimes />} />
+          <Route path='/filter' element={<GenrePage />} />
         </Routes>
       <Footer />
     </Router>

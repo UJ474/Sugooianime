@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
-import AnimeCard from '../../components/animecard';
+import { Link } from 'react-router-dom';
 import './genresection.css';
 
 
-const genreMap = {
-  Action: 1,
-  Adventure: 2,
-  Comedy: 4,
-  Drama: 8,
-  Fantasy: 10,
-  Horror: 14,
-  Mystery: 7,
-  Romance: 22,
-  SciFi: 24,
-};
+const genreList = [
+
+  'Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons',
+  'Drama', 'Ecchi', 'Fantasy', 'Game', 'Harem', 'Historical',
+  'Horror', 'Isekai', 'Josei', 'Kids', 'Magic', 'Martial Arts',
+  'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police',
+  'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen',
+  'Shoujo', 'Shounen', 'Slice of Life',
+  'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller',
+  'Vampire',
+];
+
+
 
 export default function GenreSection() {
   const [selectedGenre, setSelectedGenre] = useState(null);
@@ -39,33 +41,17 @@ export default function GenreSection() {
   }, [selectedGenre]);
 
   return (
-    <div className="genre-container">
-      <h2 className="genre-heading">Browse by Genre</h2>
-      <div className="genre-buttons">
-        {Object.entries(genreMap).map(([name, id]) => (
-          <button
-            key={id}
-            className={`genre-btn ${selectedGenre === id ? 'active' : ''}`}
-            onClick={() => setSelectedGenre(id)}
-          >
-            {name}
-          </button>
+    <div className="genre-section-container">
+      <h2 className="genre-title">Genres</h2>
+      <div className="genre-grid">
+        {genreList.map((genre, index) => (
+          <Link to="" className="genre-link" key={index}>
+            {genre}
+          </Link>
         ))}
       </div>
-      <div className="genre-anime-grid">
-        {animeList.length > 0 ? (
-          animeList.map((anime, idx) => (
-            <AnimeCard
-              key={idx}
-              title={anime.title}
-              imageUrl={anime.imageUrl}
-              synopsis={anime.synopsis}
-              rating={anime.rating}
-            />
-          ))
-        ) : (
-          selectedGenre && <p className="genre-loading">Loading anime...</p>
-        )}
+      <div className="show-more-container">
+        <button className="show-more-btn">Show more</button>
       </div>
     </div>
   );
