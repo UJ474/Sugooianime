@@ -6,6 +6,7 @@ import SuggestedAnime from './assets/SuggestedAnime/suggestedanime.jsx'
 import HomePagecontent from './assets/HomePage/HomePagecontent.jsx'
 import CurrentAnimes from './assets/CurrentAnime/currentanimes.jsx'
 import GenrePage from './assets/GenrePage/genrepage.jsx';
+import SpecificGenre from './assets/SpecificGenre/specificgenre.jsx';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path='/suggested' element={<SuggestedAnime />} />
           <Route path='/current' element={<CurrentAnimes />} />
           <Route path='/filter' element={<GenrePage />} />
+          <Route path='/genre/:genreName' element={<SpecificGenre />} />
         </Routes>
       <Footer />
     </Router>

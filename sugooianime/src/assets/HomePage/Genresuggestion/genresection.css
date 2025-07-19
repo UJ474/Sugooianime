@@ -1,14 +1,14 @@
-
-
 .genre-section-container {
   padding: 2rem;
   background-color: #0101025b;
   color: white;
   font-family: 'Cinzel', sans-serif;
+  text-align: center;
 }
 
 .genre-title {
-  font-size: 2rem;
+  text-align: center;
+  font-size: 6rem;
   font-weight: 700;
   color: #beb3ff;
   margin-bottom: 1.5rem;
@@ -59,6 +59,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .show-more-btn:hover {

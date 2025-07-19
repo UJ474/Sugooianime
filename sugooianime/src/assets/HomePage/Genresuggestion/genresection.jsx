@@ -4,15 +4,45 @@ import './genresection.css';
 
 
 const genreList = [
-
-  'Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons',
-  'Drama', 'Ecchi', 'Fantasy', 'Game', 'Harem', 'Historical',
-  'Horror', 'Isekai', 'Josei', 'Kids', 'Magic', 'Martial Arts',
-  'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police',
-  'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen',
-  'Shoujo', 'Shounen', 'Slice of Life',
-  'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller',
-  'Vampire',
+  { name: 'Action', key: 'action' },
+  { name: 'Adventure', key: 'adventure' },
+  { name: 'Cars', key: 'cars' },
+  { name: 'Comedy', key: 'comedy' },
+  { name: 'Dementia', key: 'dementia' },
+  { name: 'Demons', key: 'demons' },
+  { name: 'Drama', key: 'drama' },
+  { name: 'Ecchi', key: 'ecchi' },
+  { name: 'Fantasy', key: 'fantasy' },
+  { name: 'Game', key: 'game' },
+  { name: 'Harem', key: 'harem' },
+  { name: 'Historical', key: 'historical' },
+  { name: 'Horror', key: 'horror' },
+  { name: 'Isekai', key: 'isekai' },
+  { name: 'Josei', key: 'josei' },
+  { name: 'Kids', key: 'kids' },
+  { name: 'Magic', key: 'magic' },
+  { name: 'Martial Arts', key: 'martial_arts' },
+  { name: 'Mecha', key: 'mecha' },
+  { name: 'Military', key: 'military' },
+  { name: 'Music', key: 'music' },
+  { name: 'Mystery', key: 'mystery' },
+  { name: 'Parody', key: 'parody' },
+  { name: 'Police', key: 'police' },
+  { name: 'Psychological', key: 'psychological' },
+  { name: 'Romance', key: 'romance' },
+  { name: 'Samurai', key: 'samurai' },
+  { name: 'School', key: 'school' },
+  { name: 'Sci-Fi', key: 'sci_fi' },
+  { name: 'Seinen', key: 'seinen' },
+  { name: 'Shoujo', key: 'shoujo' },
+  { name: 'Shounen', key: 'shounen' },
+  { name: 'Slice of Life', key: 'slice_of_life' },
+  { name: 'Space', key: 'space' },
+  { name: 'Sports', key: 'sports' },
+  { name: 'Super Power', key: 'super_power' },
+  { name: 'Supernatural', key: 'supernatural' },
+  { name: 'Thriller', key: 'thriller' },
+  { name: 'Vampire', key: 'vampire' },
 ];
 
 
@@ -40,19 +70,26 @@ export default function GenreSection() {
       .catch(err => console.error('Error fetching genre anime:', err));
   }, [selectedGenre]);
 
+  
   return (
     <div className="genre-section-container">
-      <h2 className="genre-title">Genres</h2>
+      <h2 className="genre-title" style={{ textAlign: 'center', fontSize: '4rem', fontWeight: '700', color: '#beb3ff', marginBottom: '1.5rem' }}>Genres</h2>
       <div className="genre-grid">
         {genreList.map((genre, index) => (
-          <Link to="" className="genre-link" key={index}>
-            {genre}
-          </Link>
+        <Link
+          to={`/genre/${genre.key}`}
+          className="genre-link"
+          key={index}
+          state={{ genreKey: genre.key, genreName: genre.name }}
+        >
+          {genre.name}
+        </Link>
         ))}
       </div>
       <div className="show-more-container">
-        <button className="show-more-btn">Show more</button>
+        <Link to="/filter" className="show-more-btn">Show more</Link>
       </div>
     </div>
   );
 }
+
