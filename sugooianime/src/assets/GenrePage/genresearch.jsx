@@ -92,7 +92,7 @@ const GenreSearch = ({ selectedGenre }) => {
     return (
         <div>
             <h2>Anime in Genres: {selectedGenre.join(', ')}</h2>
-            <div className="filtered-anime-container">
+            <div className="filteredanimecontainer">
                 {animeList.map(anime => (
                     <AnimeCard
                         key={anime.mal_id}

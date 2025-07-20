@@ -1,4 +1,4 @@
-.genre-section-container {
+.genresectioncontainer {
   padding: 2rem;
   background-color: #0101025b;
   color: white;
@@ -6,7 +6,7 @@
   text-align: center;
 }
 
-.genre-title {
+.genretitle {
   text-align: center;
   font-size: 6rem;
   font-weight: 700;
@@ -14,7 +14,7 @@
   margin-bottom: 1.5rem;
 }
 
-.genre-grid {
+.genregrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 1rem;
@@ -23,7 +23,8 @@
   border-radius: 10px;
 }
 
-.genre-link {
+
+.genrelink {
   font-weight: 600;
   text-align: center;
   padding: 1rem 0;
@@ -32,25 +33,25 @@
   transition: all 0.3s ease;
 }
 
-.genre-link:nth-child(6n + 1) { color: #b6fcd5; }
-.genre-link:nth-child(6n + 2) { color: #ff9eb5; }
-.genre-link:nth-child(6n + 3) { color: #ff6f61; }
-.genre-link:nth-child(6n + 4) { color: #c29fff; }
-.genre-link:nth-child(6n + 5) { color: #9de2e2; }
-.genre-link:nth-child(6n + 6) { color: #f4c4ec; }
+.genrelink:nth-child(6n + 1) { color: #b6fcd5; }
+.genrelink:nth-child(6n + 2) { color: #ff9eb5; }
+.genrelink:nth-child(6n + 3) { color: #ff6f61; }
+.genrelink:nth-child(6n + 4) { color: #c29fff; }
+.genrelink:nth-child(6n + 5) { color: #9de2e2; }
+.genrelink:nth-child(6n + 6) { color: #f4c4ec; }
 
-.genre-link:hover {
+.genrelink:hover {
   /* background-color: rgba(255, 255, 255, 0.1); */
   transform: scale(1.15);
 }
 
-.show-more-container {
+.showmorecontainer {
   margin-top: 2rem;
   display: flex;
   justify-content: center;
 }
 
-.show-more-btn {
+.showmorebtn {
   background-color: #3c3f58;
   color: white;
   border: none;
@@ -62,6 +63,6 @@
   text-decoration: none;
 }
 
-.show-more-btn:hover {
+.showmorebtn:hover {
   background-color: #505377;
 }

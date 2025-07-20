@@ -1,5 +1,4 @@
-
-.specific-genre-page {
+.specificgenrepage {
   padding: 2rem;
   background-color: #0f0f0f;
   min-height: 100vh;
@@ -7,7 +6,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.genre-heading {
+.genreheading {
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -16,7 +15,7 @@
   text-transform: capitalize;
 }
 
-.anime-grid {
+.animegrid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

@@ -23,6 +23,7 @@ const CurrentAnimeFeed = () => {
         fetchAndStoreCurrentAnime();
     }, []);
 
+    
     function fetchAndStoreCurrentAnime() {
         fetch('https://api.jikan.moe/v4/seasons/now?page=1')
             .then(response => response.json())
@@ -56,8 +57,8 @@ const CurrentAnimeFeed = () => {
 
     return (
         <div>
-            <h2 className="fancy-heading" style={{ textAlign: 'left', paddingLeft: '20px' }}>Currently Airing</h2>
-            <div className="anime-scroll">
+            <h2 className="fancyheading" style={{ textAlign: 'left', paddingLeft: '20px' }}>Currently Airing</h2>
+            <div className="animescroll">
                 {animeList.slice(0, 10).map((anime, index) => (
                     <div key={index} style={{ flex: '0 0 auto', marginRight: '10px' }}>
                         <AnimeCard

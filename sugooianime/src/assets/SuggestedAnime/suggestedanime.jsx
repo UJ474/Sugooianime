@@ -28,7 +28,6 @@ export default function SuggestedAnime() {
                 return;
             }
         }
-
         fetchAndStoreSuggestedAnime(currentPage);
     }, [currentPage]);
 
@@ -76,7 +75,7 @@ export default function SuggestedAnime() {
 
     return (
         <>
-        <div className="suggested-anime-list">
+        <div className="suggestedanimelist">
             {suggestedAnimes.length > 0 && suggestedAnimes.map((anime, index) => (
                 <AnimeCard
                     key={index}
@@ -88,17 +87,17 @@ export default function SuggestedAnime() {
             ))}
         </div>
             <div style={{ marginTop: '3rem' }}>
-                <button className="change-buttons" disabled={currentPage === 1} onClick={() => setCurrentPage(prev => (prev - 1))}>Prev</button>
+                <button className="changebuttons" disabled={currentPage === 1} onClick={() => setCurrentPage(prev => (prev - 1))}>Prev</button>
                 {Array.from({ length: 10 }, (_, i) => {
                     const startPage = Math.max(currentPage - 5, 1);
                     const pageNum = startPage + i;
                     return (
                         <button
-                            key={pageNum} onClick={() => setCurrentPage(pageNum)} className="page-button"> {pageNum}
+                            key={pageNum} onClick={() => setCurrentPage(pageNum)} className="pagebutton"> {pageNum}
                         </button>
                     );
                 })}
-                <button className="change-buttons" onClick={() => setCurrentPage(prev => prev + 1)}>Next</button>
+                <button className="changebuttons" onClick={() => setCurrentPage(prev => prev + 1)}>Next</button>
             </div>
         </>
     )

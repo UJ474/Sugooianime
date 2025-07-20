@@ -5,11 +5,11 @@
 }
 
 body {
-  background-color: black;
-  color: white;
-  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   margin: 0;
-  
+  padding: 0;
+  height: 100%;
 }
 
 body, #root {
@@ -17,3 +17,5 @@ body, #root {
   padding: 0;
   height: 100%;
 }
+
+

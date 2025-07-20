@@ -131,7 +131,7 @@
   border-color: #000000;
 }
 
-.filtered-anime-container {
+.filteredanimecontainer {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;

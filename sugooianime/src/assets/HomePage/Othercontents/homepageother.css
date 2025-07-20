@@ -1,4 +1,4 @@
-.anime-scroll {
+.animescroll {
   display: flex;
   overflow-x: auto;
   padding: 10px 20px;
@@ -10,16 +10,16 @@
   scroll-padding: 0 20px;
 }
 
-.anime-scroll::-webkit-scrollbar {
+.animescroll::-webkit-scrollbar {
   display: none;
 }
 
-.anime-scroll > div {
+.animescroll > div {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
-.fancy-heading {
+.fancyheading {
   font-family: 'Cinzel', serif;
   font-weight: 700;
   font-size: 2rem;

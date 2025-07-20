@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect, useState, useRef } from "react";
 import trendingdata from "./trendingdata.jsx";
 import SynopsisText from "./synopsistext.jsx";
@@ -16,6 +17,54 @@ import img10 from './TrendingAssests/gintamaen.png'
 
 
 
+
+
+const genreList = [
+  { name: 'Action', key: 'action' },
+  { name: 'Adventure', key: 'adventure' },
+  { name: 'Cars', key: 'cars' },
+  { name: 'Comedy', key: 'comedy' },
+  { name: 'Dementia', key: 'dementia' },
+  { name: 'Demons', key: 'demons' },
+  { name: 'Drama', key: 'drama' },
+  { name: 'Ecchi', key: 'ecchi' },
+  { name: 'Fantasy', key: 'fantasy' },
+  { name: 'Game', key: 'game' },
+  { name: 'Harem', key: 'harem' },
+  { name: 'Historical', key: 'historical' },
+  { name: 'Horror', key: 'horror' },
+  { name: 'Isekai', key: 'isekai' },
+  { name: 'Josei', key: 'josei' },
+  { name: 'Kids', key: 'kids' },
+  { name: 'Magic', key: 'magic' },
+  { name: 'Martial Arts', key: 'martial_arts' },
+  { name: 'Mecha', key: 'mecha' },
+  { name: 'Military', key: 'military' },
+  { name: 'Music', key: 'music' },
+  { name: 'Mystery', key: 'mystery' },
+  { name: 'Parody', key: 'parody' },
+  { name: 'Police', key: 'police' },
+  { name: 'Psychological', key: 'psychological' },
+  { name: 'Romance', key: 'romance' },
+  { name: 'Samurai', key: 'samurai' },
+  { name: 'School', key: 'school' },
+  { name: 'Sci-Fi', key: 'sci_fi' },
+  { name: 'Seinen', key: 'seinen' },
+  { name: 'Shoujo', key: 'shoujo' },
+  { name: 'Shounen', key: 'shounen' },
+  { name: 'Slice of Life', key: 'slice_of_life' },
+  { name: 'Space', key: 'space' },
+  { name: 'Sports', key: 'sports' },
+  { name: 'Super Power', key: 'super_power' },
+  { name: 'Supernatural', key: 'supernatural' },
+  { name: 'Thriller', key: 'thriller' },
+  { name: 'Vampire', key: 'vampire' },
+];
+
+
+
+
+
 export default function TrendingAnime() {
     const [topAnime, setTopAnime] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,8 +76,7 @@ export default function TrendingAnime() {
 
     useEffect(() => {
         // localStorage.removeItem('trendingAnime');
-        // localStorage is a Web API that allows you to store key-value pairs in the browser...
-        // and the data persists even after the page is refreshed or the browser is closed.
+        // localStorage is a Web API that allows you to store key-value pairs in the browser and the data persists even after the page is refreshed or the browser is closed.
 
         const storedData = localStorage.getItem('trendingAnime');
     
@@ -122,9 +170,15 @@ export default function TrendingAnime() {
                 {/* <p style={{padding:'0.5rem'}}>⭐ {topAnime[currentIndex].score}</p> */}
                 <div style={{padding:'0.5rem'}}>
                 {topAnime[currentIndex].genres.map((gen) => (
-                      <a href={gen.url} key={gen.name} style={{ marginRight: "8px", textDecoration: 'none', color: 'inherit' }} className="genre-tag">
-                      {gen.name}
-                    </a>
+                  <Link
+                    to={`/genre/${gen.name.toLowerCase().replace(/\s+/g, '_')}`}
+                    key={gen.name}
+                    state={{ genreKey: gen.name.toLowerCase().replace(/\s+/g, '_'), genreName: gen.name }}
+                    style={{ marginRight: "8px", textDecoration: 'none', color: 'inherit' }}
+                    className="genretag"
+                  >
+                    {gen.name}
+                  </Link>
                 ))}
                 </div>
                 

@@ -6,7 +6,7 @@
     gap: 1.5rem;
 }
 
-.page-button, .change-buttons {
+.pagebutton, .changebuttons {
     background-color: #1e3a8a;
     color: #fff;
     border: none;
@@ -18,17 +18,17 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.page-button:hover, .change-buttons:hover {
+.pagebutton:hover, .changebuttons:hover {
     background-color: #3b82f6;
     transform: translateY(-2px);
 }
 
-.page-button.active, .change-buttons.active {
+.pagebutton.active, .changebuttons.active {
     background-color: #0f172a;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.page-button:disabled, .change-buttons:disabled {
+.pagebutton:disabled, .changebuttons:disabled {
     background-color: #9ca3af;
     cursor: not-allowed;
     transform: none;

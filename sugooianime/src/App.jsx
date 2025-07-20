@@ -7,12 +7,13 @@ import HomePagecontent from './assets/HomePage/HomePagecontent.jsx'
 import CurrentAnimes from './assets/CurrentAnime/currentanimes.jsx'
 import GenrePage from './assets/GenrePage/genrepage.jsx';
 import SpecificGenre from './assets/SpecificGenre/specificgenre.jsx';
-
+import AnimePage from './assets/AnimePage/animepage.jsx'
 
 function App() {
 
   return (
     <>
+
     <Router>
       <Header />
         <Routes>
@@ -21,12 +22,12 @@ function App() {
           <Route path='/current' element={<CurrentAnimes />} />
           <Route path='/filter' element={<GenrePage />} />
           <Route path='/genre/:genreName' element={<SpecificGenre />} />
+          <Route path='/anime/:animeId' element={<AnimePage />} />
         </Routes>
       <Footer />
     </Router>
     </>
   )
 }
-
 
 export default App

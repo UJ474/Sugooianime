@@ -72,24 +72,23 @@ export default function GenreSection() {
 
   
   return (
-    <div className="genre-section-container">
-      <h2 className="genre-title" style={{ textAlign: 'center', fontSize: '4rem', fontWeight: '700', color: '#beb3ff', marginBottom: '1.5rem' }}>Genres</h2>
-      <div className="genre-grid">
+    <div className="genresectioncontainer">
+      <h2 className="genretitle" style={{ textAlign: 'center', fontSize: '4rem', fontWeight: '700', color: '#beb3ff', marginBottom: '1.5rem' }}>Genres</h2>
+      <div className="genregrid">
         {genreList.map((genre, index) => (
-        <Link
-          to={`/genre/${genre.key}`}
-          className="genre-link"
-          key={index}
-          state={{ genreKey: genre.key, genreName: genre.name }}
-        >
+          <Link
+            to={`/genre/${genre.key}`}
+            className="genrelink"
+            key={index}
+            state={{ genreKey: genre.key, genreName: genre.name }}
+          >
           {genre.name}
         </Link>
         ))}
       </div>
-      <div className="show-more-container">
-        <Link to="/filter" className="show-more-btn">Show more</Link>
+      <div className="showmorecontainer">
+        <Link to="/filter" className="showmorebtn">Show more</Link>
       </div>
     </div>
   );
 }
-

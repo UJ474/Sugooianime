@@ -90,12 +90,12 @@ export default function SpecificGenre() {
 
 
   return (
-    <div className="specific-genre-page">
-      <h2 className="genre-heading">{genreName} Anime</h2>
+    <div className="specificgenrepage">
+      <h2 className="genreheading">{genreName} Anime</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="anime-grid">
+        <div className="animegrid">
           {animes.map((anime, index) => (
             <AnimeCard
               key={index}
@@ -109,7 +109,7 @@ export default function SpecificGenre() {
       )}
       <div style={{ marginTop: '3rem' }}>
         <button
-          className="change-buttons"
+          className="changebuttons"
           disabled={currentPage === 1}
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
         >
@@ -122,14 +122,14 @@ export default function SpecificGenre() {
             <button
               key={pageNum}
               onClick={() => setCurrentPage(pageNum)}
-              className={`page-button ${currentPage === pageNum ? 'active' : ''}`}
+              className={`pagebutton ${currentPage === pageNum ? 'active' : ''}`}
             >
               {pageNum}
             </button>
           );
         })}
         <button
-          className="change-buttons"
+          className="changebuttons"
           onClick={() => setCurrentPage(prev => prev + 1)}
         >
           Next
@@ -138,3 +138,4 @@ export default function SpecificGenre() {
     </div>
   );
 }
+
