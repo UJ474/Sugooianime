@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import AnimeCard from '../../components/animecard';
+import '../../css_files/spinner.css';
 import './homepageother.css';
 
-
 const CurrentAnimeFeed = () => {
-
     const [animeList, setAnimeList] = useState([]);
-    // const fetchRef = useRef(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const currentStoredData = localStorage.getItem('currentanimesdata');
@@ -17,14 +16,15 @@ const CurrentAnimeFeed = () => {
 
             if (now - parsedData.timestamp < oneday) {
                 setAnimeList(parsedData.data);
+                setLoading(false);
                 return;
             }
         }
         fetchAndStoreCurrentAnime();
     }, []);
 
-    
     function fetchAndStoreCurrentAnime() {
+        setLoading(true);
         fetch('https://api.jikan.moe/v4/seasons/now?page=1')
             .then(response => response.json())
             .then(data => {
@@ -51,9 +51,17 @@ const CurrentAnimeFeed = () => {
             })
             .catch(error => {
                 console.log("Error fetching current anime:", error);
-            });
+            })
+            .finally(() => setLoading(false));
     }
 
+    if (loading) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>
+                <div className="loading-spinner"></div>
+            </div>
+        );
+    }
 
     return (
         <div>

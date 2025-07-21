@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './animepage.css';
+import '../css_files/spinner.css';
+import CurrentAnimeFeed from '../HomePage/Othercontents/currentanimefeed';
+import SuggestedAnimeFeed from '../HomePage/Othercontents/suggestedanimefeed';
 
 const AnimePage = () => {
   const { animeId } = useParams();
   const [animeData, setAnimeData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!animeId) return;
 
     console.log("Fetching anime with title:", animeId);
+    setLoading(true);
     fetch(`https://api.jikan.moe/v4/anime?q=${animeId}`)
       .then(res => res.json())
       .then(data => {
@@ -19,10 +24,21 @@ const AnimePage = () => {
           console.error("No anime found for:", animeId);
         }
       })
-      .catch(err => console.error("Failed to fetch anime details:", err));
+      .catch(err => console.error("Failed to fetch anime details:", err))
+      .finally(() => {
+        setLoading(false);
+      });
   }, [animeId]);
 
-  if (!animeData) return <div className="animepagecontainer">Loading...</div>;
+  if (loading) {
+    return (
+      <div className="animepagecontainer" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
+  if (!animeData) return <div className="animepagecontainer">No data available.</div>;
 
   return (
     <div className="animepagecontainer">
@@ -41,10 +57,10 @@ const AnimePage = () => {
             <span>TV</span>
             <span>{animeData.duration}</span>
           </div>
-          <div>
+          {/* <div>
             <button className="watchbutton">▶ Watch now</button>
             <button className="addlistbutton">+ Add to List</button>
-          </div>
+          </div> */}
           <p className="animesynopsis">{animeData.synopsis}</p>
         </div>
         <div className="animeinforight">
@@ -59,6 +75,12 @@ const AnimePage = () => {
           <p><strong>Studios:</strong> {animeData.studios.map(s => s.name).join(', ')}</p>
           <p><strong>Producers:</strong> {animeData.producers.map(p => p.name).join(', ')}</p>
         </div>
+      </div>
+      <div style={{ overflowX: 'auto', maxWidth: '100%', marginTop: '6rem', padding: '4rem 1rem', borderTop: '1px solid #ccc' }}>
+        <CurrentAnimeFeed />
+      </div>
+      <div style={{ overflowX: 'auto', maxWidth: '100%', padding: '0 1rem', borderTop: '1px solid #ccc' }}>
+        <SuggestedAnimeFeed />
       </div>
     </div>
   );

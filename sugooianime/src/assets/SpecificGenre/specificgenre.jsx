@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import AnimeCard from '../components/animecard';
+import '../css_files/spinner.css';
 import './specificgenre.css';
 
 
@@ -51,6 +52,8 @@ const genreMap = {
   isekai: 62
 };
 
+
+
 export default function SpecificGenre() {
   const { genreName } = useParams();
   const [animes, setAnimes] = useState([]);
@@ -78,7 +81,6 @@ export default function SpecificGenre() {
           rating: anime.score,
         }));
         setAnimes(formatted);
-        console.log("Fetched anime data:", formatted);
       } catch (error) {
         console.error("Failed to fetch genre-specific anime:", error);
       } finally {
@@ -88,12 +90,13 @@ export default function SpecificGenre() {
     fetchGenreAnime();
   }, [genreName, currentPage]);
 
-
   return (
     <div className="specificgenrepage">
       <h2 className="genreheading">{genreName} Anime</h2>
       {loading ? (
-        <p>Loading...</p>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>
+          <div className="loading-spinner"></div>
+        </div>
       ) : (
         <div className="animegrid">
           {animes.map((anime, index) => (
@@ -138,4 +141,3 @@ export default function SpecificGenre() {
     </div>
   );
 }
-

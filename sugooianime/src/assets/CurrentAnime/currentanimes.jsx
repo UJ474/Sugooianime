@@ -1,17 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 import currentanimedata from './currentanimedata.jsx';
 import AnimeCard from "../components/animecard.jsx";
+import '../css_files/spinner.css';
 import './currentanime.css';
 
 export default function CurrentAnimes() {
     const [currentAnimes, setCurrentAnimes] = useState([]);
+    const [loading, setLoading] = useState(true);
     const fetchRef = useRef(false);
     const [currentPage, setCurrentPage] = useState(Number(localStorage.getItem("currentAnimePage")) || 1);
 
     useEffect(() => {
-        
         const storedData = localStorage.getItem('currentanimesdata');
-
         if (storedData) {
             const parsedData = JSON.parse(storedData);
             const now = new Date().getTime();
@@ -21,6 +21,7 @@ export default function CurrentAnimes() {
                 setCurrentAnimes(parsedData.data);
                 currentanimedata.length = 0;
                 currentanimedata.push(...parsedData.data);
+                setLoading(false);
                 return;
             }
         }
@@ -35,6 +36,7 @@ export default function CurrentAnimes() {
     }, [currentPage]);
 
     function fetchAndStoreCurrentAnime(page) {
+        setLoading(true);
         fetch(`https://api.jikan.moe/v4/seasons/now?page=${page}`)
             .then(response => response.json())
             .then(data => {
@@ -64,13 +66,22 @@ export default function CurrentAnimes() {
             })
             .catch(error => {
                 console.log("Error fetching current anime:", error);
-            });
+            })
+            .finally(() => setLoading(false));
+    }
+
+    if (loading) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
+                <div className="loading-spinner"></div>
+            </div>
+        );
     }
 
     return (
         <>
         <div className="suggested-anime-list">
-            {currentAnimes.length > 0 && currentAnimes.map((anime, index) => (
+            {currentAnimes.map((anime, index) => (
                 <AnimeCard
                     key={index}
                     title={anime.title_english || anime.title}

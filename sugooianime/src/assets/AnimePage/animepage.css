@@ -2,12 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   padding: 2rem;
-  background: linear-gradient(to bottom right, #1c1c2a, #2a2a3d);
+  background: linear-gradient(to bottom right, #000000, #000000);
   color: white;
     gap: 2rem;
 }
-
-
 
 .animepageleft {
   flex: 1 1 250px;
@@ -143,6 +141,7 @@
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+  justify-content: center;
 }
 
 .ratingtag {

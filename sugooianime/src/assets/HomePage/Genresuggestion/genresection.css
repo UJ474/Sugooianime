@@ -18,7 +18,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 1rem;
-  background-color: #3542d45b;
+  background-color: #41367e;
   padding: 2rem;
   border-radius: 10px;
 }

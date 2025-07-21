@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import trendingdata from "./trendingdata.jsx";
 import SynopsisText from "./synopsistext.jsx";
 import './trendinganime.css'
+import '../../css_files/spinner.css';
 
 import img1 from './TrendingAssests/frieren.png'
 import img2 from './TrendingAssests/fullmetal.png'
@@ -14,8 +15,6 @@ import img7 from './TrendingAssests/gintamafinal.png'
 import img8 from './TrendingAssests/hunterxhunter.png'
 import img9 from './TrendingAssests/gintama2.png'
 import img10 from './TrendingAssests/gintamaen.png'
-
-
 
 
 
@@ -63,13 +62,12 @@ const genreList = [
 
 
 
-
-
 export default function TrendingAnime() {
     const [topAnime, setTopAnime] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [prevIndex, setPrevIndex] = useState(null);
     const fetchRef = useRef(false);
+    const [loading, setLoading] = useState(true);
     const imagelinks = [
         img1, img2, img3, img4, img5, img6, img7, img8, img9, img10
     ]
@@ -89,6 +87,7 @@ export default function TrendingAnime() {
                 setTopAnime(parsedData.data);
                 trendingdata.length = 0;
                 trendingdata.push(...parsedData.data);
+                setLoading(false);
             } else {
                 localStorage.removeItem('trendingAnime');
                 fetchAndStoreTrendingAnime();
@@ -101,6 +100,7 @@ export default function TrendingAnime() {
     }, []);
     
     function fetchAndStoreTrendingAnime() {
+        setLoading(true);
         fetch("https://api.jikan.moe/v4/top/anime")
             .then(response => response.json())
             .then(data => {
@@ -128,6 +128,9 @@ export default function TrendingAnime() {
             })
             .catch(error => {
                 console.error("Error fetching trending anime:", error);
+            })
+            .finally(() => {
+                setLoading(false);
             });
     }
 
@@ -141,6 +144,14 @@ export default function TrendingAnime() {
             return () => clearInterval(interval);
         }
     }, [topAnime, currentIndex]);
+
+    if (loading) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
+                <div className="loading-spinner"></div>
+            </div>
+        );
+    }
 
     return (
         <>

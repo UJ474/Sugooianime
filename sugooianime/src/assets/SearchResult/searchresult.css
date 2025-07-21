@@ -1,0 +1,8 @@
+.filteredanimecontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-bottom: 3rem;
+}

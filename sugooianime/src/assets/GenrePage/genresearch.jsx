@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AnimeCard from '../components/AnimeCard';
+import '../css_files/spinner.css';
 
 const API_URL = 'https://api.jikan.moe/v4/anime';
 
@@ -47,65 +48,67 @@ const genreMap = {
   Vampire: 32
 };
 
-
 const GenreSearch = ({ selectedGenre }) => {
-    const [animeList, setAnimeList] = useState([]);
-    const [loading, setLoading] = useState(false);
+  const [animeList, setAnimeList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        if (!selectedGenre || selectedGenre.length === 0) return;
+  useEffect(() => {
+    if (!selectedGenre || selectedGenre.length === 0) return;
 
-        const fetchAnimeByGenres = async () => {
-            setLoading(true);
-            try {
-                const genreIds = selectedGenre.map(genre => genreMap[genre]).filter(Boolean);
-                if (genreIds.length === 0) {
-                    setAnimeList([]);
-                    setLoading(false);
-                    return;
-                }
+    const fetchAnimeByGenres = async () => {
+      setLoading(true);
+      try {
+        const genreIds = selectedGenre.map(genre => genreMap[genre]).filter(Boolean);
+        if (genreIds.length === 0) {
+          setAnimeList([]);
+          setLoading(false);
+          return;
+        }
 
-                const response = await fetch(`${API_URL}?genres=${genreIds.join(',')}`);
-                const data = await response.json();
-                if (data.data && Array.isArray(data.data)) {
-                    setAnimeList(data.data);
-                } else {
-                    setAnimeList([]);
-                }
-            } catch (error) {
-                setAnimeList([]);
-            }
-            setLoading(false);
-        };
+        const response = await fetch(`${API_URL}?genres=${genreIds.join(',')}`);
+        const data = await response.json();
+        if (data.data && Array.isArray(data.data)) {
+          setAnimeList(data.data);
+        } else {
+          setAnimeList([]);
+        }
+      } catch (error) {
+        setAnimeList([]);
+      }
+      setLoading(false);
+    };
 
-        fetchAnimeByGenres();
-    }, [selectedGenre]);
+    fetchAnimeByGenres();
+  }, [selectedGenre]);
 
-    if (!selectedGenre || selectedGenre.length === 0) {
-        return <div>Please select a genre.</div>;
-    }
+  if (!selectedGenre || selectedGenre.length === 0) {
+    return <div>Please select a genre.</div>;
+  }
 
-    if (loading) {
-        return <div>Loading anime...</div>;
-    }
-
+  if (loading) {
     return (
-        <div>
-            <h2>Anime in Genres: {selectedGenre.join(', ')}</h2>
-            <div className="filteredanimecontainer">
-                {animeList.map(anime => (
-                    <AnimeCard
-                        key={anime.mal_id}
-                        title={anime.title_english || anime.title}
-                        imageUrl={anime.images.jpg.large_image_url}
-                        synopsis={anime.synopsis}
-                        rating={anime.score}
-                    />
-                ))}
-            </div>
-        </div>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>
+        <div className="loading-spinner"></div>
+      </div>
     );
-};
+  }
 
+  return (
+    <div>
+      <h2>Anime in Genres: {selectedGenre.join(', ')}</h2>
+      <div className="filteredanimecontainer">
+        {animeList.map(anime => (
+          <AnimeCard
+            key={anime.mal_id}
+            title={anime.title_english || anime.title}
+            imageUrl={anime.images.jpg.large_image_url}
+            synopsis={anime.synopsis}
+            rating={anime.score}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default GenreSearch;

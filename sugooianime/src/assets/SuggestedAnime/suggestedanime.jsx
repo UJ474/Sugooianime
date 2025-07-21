@@ -1,19 +1,17 @@
 import { useEffect, useState, useRef } from "react";
-import suggestedanimedata from './suggestedanimedata.jsx'
+import suggestedanimedata from './suggestedanimedata.jsx';
 import AnimeCard from "../components/animecard.jsx";
+import '../css_files/spinner.css';
 import './suggestedanime.css';
-
-
-
 
 export default function SuggestedAnime() {
     const [suggestedAnimes, setSuggestedAnimes] = useState([]);
+    const [loading, setLoading] = useState(true);
     const fetchRef = useRef(false);
     const [currentPage, setCurrentPage] = useState(Number(localStorage.getItem("animePage")) || 1);
 
     useEffect(() => {
         localStorage.removeItem('suggestedanimesdata');
-
         const suggestedStoredData = localStorage.getItem('suggestedanimesdata');
 
         if (suggestedStoredData) {
@@ -25,12 +23,12 @@ export default function SuggestedAnime() {
                 setSuggestedAnimes(parsedData.data);
                 suggestedanimedata.length = 0;
                 suggestedanimedata.push(...parsedData.data);
+                setLoading(false);
                 return;
             }
         }
         fetchAndStoreSuggestedAnime(currentPage);
     }, [currentPage]);
-
 
     useEffect(() => {
         if (fetchRef.current) {
@@ -40,6 +38,7 @@ export default function SuggestedAnime() {
     }, [currentPage]);
 
     function fetchAndStoreSuggestedAnime(page) {
+        setLoading(true);
         fetch(`https://api.jikan.moe/v4/top/anime?filter=bypopularity&page=${page}`)
             .then(response => response.json())
             .then(data => {
@@ -69,14 +68,22 @@ export default function SuggestedAnime() {
             })
             .catch(error => {
                 console.log("Error fetching trending anime:", error);
-            });
+            })
+            .finally(() => setLoading(false));
     }
 
+    if (loading) {
+        return (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '400px' }}>
+                <div className="loading-spinner"></div>
+            </div>
+        );
+    }
 
     return (
         <>
         <div className="suggestedanimelist">
-            {suggestedAnimes.length > 0 && suggestedAnimes.map((anime, index) => (
+            {suggestedAnimes.map((anime, index) => (
                 <AnimeCard
                     key={index}
                     title={anime.title_english || anime.title}
@@ -86,19 +93,23 @@ export default function SuggestedAnime() {
                 />
             ))}
         </div>
-            <div style={{ marginTop: '3rem' }}>
-                <button className="changebuttons" disabled={currentPage === 1} onClick={() => setCurrentPage(prev => (prev - 1))}>Prev</button>
-                {Array.from({ length: 10 }, (_, i) => {
-                    const startPage = Math.max(currentPage - 5, 1);
-                    const pageNum = startPage + i;
-                    return (
-                        <button
-                            key={pageNum} onClick={() => setCurrentPage(pageNum)} className="pagebutton"> {pageNum}
-                        </button>
-                    );
-                })}
-                <button className="changebuttons" onClick={() => setCurrentPage(prev => prev + 1)}>Next</button>
-            </div>
+        <div style={{ marginTop: '3rem' }}>
+            <button className="changebuttons" disabled={currentPage === 1} onClick={() => setCurrentPage(prev => (prev - 1))}>Prev</button>
+            {Array.from({ length: 10 }, (_, i) => {
+                const startPage = Math.max(currentPage - 5, 1);
+                const pageNum = startPage + i;
+                return (
+                    <button
+                        key={pageNum}
+                        onClick={() => setCurrentPage(pageNum)}
+                        className="pagebutton">
+                        {pageNum}
+                    </button>
+                );
+            })}
+            <button className="changebuttons" onClick={() => setCurrentPage(prev => prev + 1)}>Next</button>
+        </div>
         </>
-    )
+    );
 }
+
