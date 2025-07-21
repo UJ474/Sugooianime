@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AnimeCard from '../components/AnimeCard';
+import AnimeCard from '../components/animecard.jsx';
 import '../css_files/spinner.css';
 
 const API_URL = 'https://api.jikan.moe/v4/anime';
