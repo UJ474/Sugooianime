@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import AnimeCard from '../components/animecard';
+import AnimeCard from '../components/animecard.jsx';
 import './searchresult.css';
 import'../css_files/spinner.css';
 
