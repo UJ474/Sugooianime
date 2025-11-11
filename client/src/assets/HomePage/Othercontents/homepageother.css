@@ -1,0 +1,29 @@
+.animescroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 20px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  scroll-padding: 0 20px;
+}
+
+.animescroll::-webkit-scrollbar {
+  display: none;
+}
+
+.animescroll > div {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.fancyheading {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+}

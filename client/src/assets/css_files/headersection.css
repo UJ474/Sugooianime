@@ -1,0 +1,266 @@
+.headersectionmain {
+  z-index: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  width: 100%;
+  background: linear-gradient(50deg, #623fff49, #5631f9dc);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+.navbarleft, .navbarright {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 100;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease, background 0.3s ease;
+  padding: 6px 6px;
+  border-radius: 8px;
+}
+
+.navbarleft:hover {
+  color: #000000;
+  background: rgba(255, 2, 31, 0.2);
+}
+
+.navbarleft {
+  position: relative;
+  left: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbarright {
+  height: 25px;
+  width: 25px;
+  position: relative;
+  right: 0;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+.navbarleftcontainer {
+  display: flex;
+  gap: 2.5em;
+  align-items: center;
+}
+
+.navbarrightcontainer {
+  display: flex;
+  gap: 0;
+  align-items: center;
+}
+
+.hamburgerimage {
+  display: none;
+  height: 30px;
+  width: 30px;
+  position: relative;
+  right: 0;
+}
+
+.sugooianimelogo {
+  height: 2.5rem;
+  width: auto;
+  position: relative;
+}
+
+.grayscale-mode {
+  filter: grayscale(100%);
+}
+
+.toggle-bw-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  background-color: #756de3;
+  color: #000;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.toggle-bw-button:hover {
+  background-color: #f0f0f0;
+}
+
+.dark-mode {
+  background-color: #0e0e0e;
+  color: #f5f5f5;
+}
+
+.light-mode {
+  background-color: #fdfdfd;
+  color: #121212;
+}
+
+.themetogglebutton {
+  position: fixed;
+  top: 65px;
+  right: 25px;
+  z-index: 9999;
+  padding: 10px 14px;
+  background: #756de3;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.themetogglebutton:hover {
+  background-color: #ddd;
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f0f0f0;
+  --accent-color: #007bff;
+}
+
+.dark-theme {
+  --bg-color: #0d1117;
+  --text-color: #ffffff;
+  --card-bg: #1c1c1e;
+  --accent-color: #ff9800;
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--accent-color);
+}
+
+@media screen and (max-width: 870px) {
+  /* .navbarleftcontainer {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+  } */
+
+  .navbarrightcontainer {
+    display: flex;
+    gap: 0.1em;
+    align-items: center;
+  }
+}
+
+.hamburger {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+
+  .hamburgerimage {
+    display: block;
+  }
+
+  .headersectionmain {
+    padding: 5px 10px;
+  }
+
+  .navbarright {
+    display: flex;
+    gap: 0;
+    align-items: center;
+    padding: 5px 5px;
+  }
+}
+
+.mobilemenu {
+  display: none;
+}
+
+.mobilemenu.show {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 1rem;
+  border-radius: 10px;
+  z-index: 999;
+  width: 200px;
+  gap: 1rem;
+}
+
+.mobilemenu .navbarleft {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.mobilemenu .navbarleft:hover {
+  text-decoration: none;
+}
+
+.searchbarcontainer {
+  position: relative;
+  margin-left: 1rem;
+}
+
+.searchinput {
+  padding: 6px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  font-size: 0.9rem;
+}
+
+.searchdropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background: white;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  z-index: 9999;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.searchitem {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+.searchitem:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .navbarleftcontainer .navbarleft {
+    display: none;
+  }
+
+  .mobilemenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    background: rgba(0,0,0,0.9);
+    padding: 1rem;
+    border-radius: 10px;
+    z-index: 1000;
+  }
+}
