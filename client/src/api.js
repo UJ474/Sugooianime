@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5001/api', // backend base URL
+  baseURL: import.meta.env.VITE_API_BASE_URL, // backend base URL
 });
+
 
 // Automatically attach JWT if logged in
 API.interceptors.request.use((config) => {
@@ -13,6 +14,7 @@ API.interceptors.request.use((config) => {
   }
   return config;
 });
+
 
 // Signup request
 export const signupUser = async (userData, navigate) => {
@@ -30,6 +32,7 @@ export const signupUser = async (userData, navigate) => {
     throw err;
   }
 };
+
 
 // Login request
 export const loginUser = async (credentials, navigate) => {

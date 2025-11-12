@@ -12,6 +12,7 @@ app.use(cors({
   origin: 'http://localhost:5173', // frontend origin
   credentials: true
 }));
+
 app.use(express.json());
 
 // Routes
@@ -26,13 +27,16 @@ app.get('/api/protected', verifyToken, (req, res) => {
   });
 });
 
+
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
+
 app.get('/', (req, res) => res.send('API running...'));
 
 // Server start
+// module.exports = app;
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

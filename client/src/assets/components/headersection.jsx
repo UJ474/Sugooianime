@@ -19,8 +19,8 @@ export default function Header() {
 
     const headerTextLinksRight = [
         { image: searchImage, alt: 'Search' },
-        // { image: savedImage, alt: 'Saved' },
-        // { image: accountImage, alt: 'Account' },
+        { image: savedImage, alt: 'Saved' },
+        { image: accountImage, alt: 'Account' },
     ];
 
     const [mode, setMode] = useState('dark');
@@ -30,6 +30,39 @@ export default function Header() {
     const navigate = useNavigate();
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const savedMode = localStorage.getItem('mode');
+        if (savedMode) setMode(savedMode);
+    }, []);
+
+    useEffect(() => {
+      const u = localStorage.getItem('user');
+      if (u) setUser(JSON.parse(u));
+    }, []);
+
+    useEffect(() => {
+        document.body.classList.remove('dark-theme', 'light-theme', 'grayscale-mode');
+        if (mode === 'light') document.body.classList.add('light-theme');
+        else if (mode === 'dark') document.body.classList.add('dark-theme');
+        else if (mode === 'bw') document.body.classList.add('grayscale-mode');
+
+        localStorage.setItem('mode', mode);
+    }, [mode]);
+
+    const cycleMode = () => {
+        setMode(prev => (prev === 'dark' ? 'light' : prev === 'light' ? 'bw' : 'dark'));
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen(prev => !prev);
+    };
+
+    const handleMobileLinkClick = () => {
+        setMobileMenuOpen(false);
+    };
 
     const handleSearch = async (e) => {
         const query = e.target.value;
@@ -57,30 +90,11 @@ export default function Header() {
         }
     };
 
-    useEffect(() => {
-        const savedMode = localStorage.getItem('mode');
-        if (savedMode) setMode(savedMode);
-    }, []);
-
-    useEffect(() => {
-        document.body.classList.remove('dark-theme', 'light-theme', 'grayscale-mode');
-        if (mode === 'light') document.body.classList.add('light-theme');
-        else if (mode === 'dark') document.body.classList.add('dark-theme');
-        else if (mode === 'bw') document.body.classList.add('grayscale-mode');
-
-        localStorage.setItem('mode', mode);
-    }, [mode]);
-
-    const cycleMode = () => {
-        setMode(prev => (prev === 'dark' ? 'light' : prev === 'light' ? 'bw' : 'dark'));
-    };
-
-    const toggleMobileMenu = () => {
-        setMobileMenuOpen(prev => !prev);
-    };
-
-    const handleMobileLinkClick = () => {
-        setMobileMenuOpen(false);
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        setUser(null);
+        navigate('/');
     };
 
     return (
@@ -130,6 +144,17 @@ export default function Header() {
                 {headerTextLinksRight.map((item, i) => (
                     <img key={i} src={item.image} alt={item.alt} className='navbarright' />
                 ))}
+                {user ? (
+                    <div className="user-info">
+                        <span className="username">Hi, {user.username}</span>
+                        <button onClick={handleLogout} className="logout-btn">Logout</button>
+                    </div>
+                ) : (
+                  <div className="auth-links">
+                    <Link to="/login" className="auth-link">Login</Link>
+                    <Link to="/signup" className="auth-link">Signup</Link>
+                  </div>
+                )}
             </div>
 
             <button onClick={cycleMode} className="themetogglebutton">

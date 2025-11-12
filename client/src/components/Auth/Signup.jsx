@@ -14,9 +14,15 @@ export default function Signup() {
   };
 
   const validateForm = () => {
-    if (!form.username.trim()) return 'Username is required';
-    if (!/\S+@\S+\.\S+/.test(form.email)) return 'Invalid email format';
-    if (form.password.length < 6) return 'Password must be at least 6 characters';
+    if (!form.username.trim()) {
+      return 'Username is required';
+    } 
+    if (!/\S+@\S+\.\S+/.test(form.email)) {
+      return 'Invalid email format';
+    } 
+    if (form.password.length < 6) {
+      return 'Password must be at least 6 characters';
+    } 
     return '';
   };
 
